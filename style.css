@@ -1,120 +1,205 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background: #0a0806;
-    color: #d4c9b0;
-    font-family: 'EB Garamond', Georgia, serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+  background: #080604;
+  font-family: 'EB Garamond', Georgia, serif;
+  color: #d4c9b0;
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+#left-panel {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 36px;
+  padding: 60px 40px 60px 60px;
+  border-right: 1px solid #1a1510;
+}
+
+#right-panel {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #quote {
-    font-style: italic;
-    font-size: 1.05rem;
-    color: #8a8070;
-    text-align: center;
-    max-width: 480px;
-    line-height: 2;
-    margin-bottom: 2;
-    transition: opacity 1.5s ease, color 1.5s ease;
-    letter-spacing: 0.02em;
-}
-
-#tree {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stem {
-    width: 1px;
-    height: 50px;
-    background: linear-gradient(to bottom, transparent, #3a2f20);
-}
-
-.branch-row {
-    display: flex;
-    gap: 36px;
-    position: relative;
-}
-
-.branch-row::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 45px;
-    right: 45px;
-    height: 1px;
-    background: #3a2f20;
-}
-
-.fig {
-    width: 88px;
-    height: 96px;
-    border-radius: 50% 50% 48% 52% / 62% 62% 38% 38%;
-    background: radial-gradient(ellipse at 38% 32%, #7a5840, #1e1008);
-    border: 1px solid #4a3220;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.4s ease, opacity 1.2s ease, box-shadow 0.4s ease;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #c8bca8;
-    position: relative;
-}
-
-.fig::before {
-    content: '';
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1px;
-    height: 18px;
-    background: #3a2f20;
-}
-
-.fig:hover {
-    transform: scale(1.07) translateY(-4px);
-    box-shadow: 0 8px 30px rgba(120, 80, 40, 0.2);
-    color: #e8dcc8;
-}
-
-.fig.faded {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(10px);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #6e6658;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  padding-left: 20px;
+  border-left: 1px solid #2a2018;
+  transition: opacity 2s ease, color 2s ease;
 }
 
 #message {
-    margin-top: 60px;
-    font-style: italic;
-    font-size: 1rem;
-    color: #9a8e9a;
-    text-align: center;
-    max-width: 380px;
-    line-height: 2;
-    opacity: 0;
-    transition: opacity 2s ease;
-    min-height: 50px;
-    letter-spacing: 0.02em;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #8a7e6e;
+  line-height: 2;
+  padding-left: 20px;
+  border-left: 1px solid #2a2018;
+  opacity: 0;
+  transition: opacity 2.5s ease;
+  min-height: 40px;
 }
 
 #message.visible { opacity: 1; }
 
 #footer {
-    position: fixed;
-    bottom: 24px;
-    font-size: 0.65rem;
-    color: #3a3028;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+  font-size: 0.62rem;
+  color: #2a2418;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding-left: 20px;
+}
+
+/* trunk */
+#trunk {
+  position: relative;
+  width: 14px;
+  height: 520px;
+  background: linear-gradient(to top, #3a2a14, #2a1e0e);
+  border-radius: 8px 6px 3px 3px;
+  margin-left: 60px;
+}
+
+#trunk::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 3px;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to top, transparent, #5a4228 40%, transparent);
+  border-radius: 2px;
+  opacity: 0.35;
+}
+
+/* branches */
+.branch {
+  position: absolute;
+  height: 7px;
+  background: linear-gradient(to right, #3a2a14, #2e2010);
+  border-radius: 0 4px 4px 0;
+  transform-origin: left center;
+}
+
+.branch-1 { width: 180px; top: 60px;  left: 14px; transform: rotate(-22deg); }
+.branch-2 { width: 155px; top: 160px; left: 14px; transform: rotate(-12deg); }
+.branch-3 { width: 190px; top: 280px; left: 14px; transform: rotate(-20deg); }
+.branch-4 { width: 145px; top: 400px; left: 14px; transform: rotate(-8deg);  }
+
+/* leaf on each branch */
+.branch::after {
+  content: '';
+  position: absolute;
+  right: 40px;
+  top: -9px;
+  width: 20px;
+  height: 9px;
+  background: #1e3018;
+  border-radius: 50%;
+  transform: rotate(-35deg);
+  opacity: 0.55;
+}
+
+/* twig hanging from branch tip */
+.twig {
+  position: absolute;
+  right: 0;
+  top: -24px;
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, #2e2010, #4a3420);
+  border-radius: 1px;
+}
+
+/* fig cluster */
+.fig-wrap {
+  position: absolute;
+  right: -14px;
+  top: -90px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+/* fig */
+.fig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.fig-body {
+  width: 54px;
+  height: 66px;
+  border-radius: 50% 50% 46% 54% / 58% 58% 42% 42%;
+  background: radial-gradient(ellipse at 38% 30%, #8a5c38 0%, #4a2e14 45%, #1a0c04 100%);
+  border: 1px solid #5a3820;
+  position: relative;
+  box-shadow:
+    inset -4px -6px 12px rgba(0,0,0,0.5),
+    inset 2px 2px 6px rgba(160,100,50,0.12);
+  transition: filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fig-small .fig-body {
+  width: 38px;
+  height: 46px;
+}
+
+.fig-small { margin-bottom: -8px; }
+
+.fig-crown {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 9px;
+  background: #2a1a08;
+  border-radius: 3px 3px 0 0;
+}
+
+.fig-highlight {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  width: 10px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(200,150,80,0.1);
+}
+
+.fig-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6a5e4e;
+  transition: color 0.4s ease;
+}
+
+.fig:hover .fig-body {
+  filter: brightness(1.5);
+  box-shadow:
+    0 0 22px rgba(160,100,40,0.35),
+    inset -4px -6px 12px rgba(0,0,0,0.5);
+}
+
+.fig:hover .fig-label { color: #c8bca8; }
+
+.fig.faded {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
 }
