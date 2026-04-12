@@ -2,77 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Where the Figs Hang</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div id="left-panel">
-    <div id="quote">"I saw my life branching out before me like the green fig tree…"</div>
-    <div id="message"></div>
-    <div id="footer">Inspired by Sylvia Plath's <em>The Bell Jar</em></div>
-  </div>
-
-  <div id="right-panel">
-    <div id="trunk">
-
-      <div class="branch branch-1">
-        <div class="twig"></div>
-        <div class="fig-wrap">
-          <div class="fig" data-name="Love" data-msg="to love is to lose yourself willingly.">
-            <div class="fig-body"><div class="fig-crown"></div><div class="fig-highlight"></div></div>
-            <span class="fig-label">Love</span>
-          </div>
-          <div class="fig fig-small" data-name="Love" data-msg="to love is to lose yourself willingly.">
-            <div class="fig-body"><div class="fig-crown"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="branch branch-2">
-        <div class="twig"></div>
-        <div class="fig-wrap">
-          <div class="fig" data-name="Art" data-msg="to create is to bleed in silence.">
-            <div class="fig-body"><div class="fig-crown"></div><div class="fig-highlight"></div></div>
-            <span class="fig-label">Art</span>
-          </div>
-          <div class="fig fig-small" data-name="Art" data-msg="to create is to bleed in silence.">
-            <div class="fig-body"><div class="fig-crown"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="branch branch-3">
-        <div class="twig"></div>
-        <div class="fig-wrap">
-          <div class="fig" data-name="Success" data-msg="to succeed is to outgrow your own skin.">
-            <div class="fig-body"><div class="fig-crown"></div><div class="fig-highlight"></div></div>
-            <span class="fig-label">Success</span>
-          </div>
-          <div class="fig fig-small" data-name="Success" data-msg="to succeed is to outgrow your own skin.">
-            <div class="fig-body"><div class="fig-crown"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="branch branch-4">
-        <div class="twig"></div>
-        <div class="fig-wrap">
-          <div class="fig" data-name="Freedom" data-msg="to be free is to belong nowhere.">
-            <div class="fig-body"><div class="fig-crown"></div><div class="fig-highlight"></div></div>
-            <span class="fig-label">Freedom</span>
-          </div>
-          <div class="fig fig-small" data-name="Freedom" data-msg="to be free is to belong nowhere.">
-            <div class="fig-body"><div class="fig-crown"></div></div>
-          </div>
-        </div>
-      </div>
-
+  <div id="quote">"I saw my life branching out before me like the green fig tree…"</div>
+  <div id="tree">
+    <div class="stem"></div>
+    <div class="branch-row">
+      <div class="fig" data-name="Love"    data-msg="to love is to lose yourself willingly.">Love</div>
+      <div class="fig" data-name="Art"     data-msg="to create is to bleed in silence.">Art</div>
+      <div class="fig" data-name="Success" data-msg="to succeed is to outgrow your own skin.">Success</div>
+      <div class="fig" data-name="Freedom" data-msg="to be free is to belong nowhere.">Freedom</div>
     </div>
   </div>
-
+  <div id="message"></div>
+  <div id="footer">Inspired by Sylvia Plath's The Bell Jar</div>
   <script src="script.js"></script>
 </body>
 </html>
