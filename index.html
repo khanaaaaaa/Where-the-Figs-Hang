@@ -5,97 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sylvia Plath</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/desk.css" />
+  <link rel="stylesheet" href="css/objects.css" />
+  <link rel="stylesheet" href="css/papers.css" />
+  <link rel="stylesheet" href="css/overlay.css" />
 </head>
 <body>
 
-  <div id="header">
-    <p class="subtitle">1932 — 1963</p>
+<div id="particles"></div>
+<div id="vignette"></div>
+
+<div id="desk">
+
+  <div id="lamp">
+    <div class="lamp-base"></div>
+    <div class="lamp-pole"></div>
+    <div class="lamp-arm"></div>
+    <div class="lamp-shade"></div>
+    <div class="lamp-glow"></div>
+  </div>
+
+  <div id="candle">
+    <div class="candle-body">
+      <div class="candle-drip d1"></div>
+      <div class="candle-drip d2"></div>
+    </div>
+    <div class="candle-flame">
+      <div class="flame-inner"></div>
+    </div>
+    <div class="candle-glow"></div>
+    <div class="candle-plate"></div>
+  </div>
+
+  <div id="typewriter">
+    <div class="tw-carriage"></div>
+    <div class="tw-body">
+      <div class="tw-paper-slot">
+        <div class="tw-paper">
+          <div class="tw-typed" id="tw-typed"></div>
+        </div>
+      </div>
+      <div class="tw-keys-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="tw-keys-row"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="tw-keys-row"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="tw-spacebar"></div>
+    </div>
+  </div>
+
+  <div id="inkwell">
+    <div class="ink-bottle">
+      <div class="ink-cap"></div>
+      <div class="ink-neck"></div>
+      <div class="ink-body">
+        <div class="ink-liquid"></div>
+        <div class="ink-shine"></div>
+      </div>
+    </div>
+    <div class="quill">
+      <div class="quill-feather"></div>
+    </div>
+  </div>
+
+  <div id="coffee">
+    <div class="cup-saucer"></div>
+    <div class="cup-body">
+      <div class="cup-liquid"></div>
+      <div class="cup-handle"></div>
+    </div>
+    <div class="steam">
+      <div class="steam-line s1"></div>
+      <div class="steam-line s2"></div>
+      <div class="steam-line s3"></div>
+    </div>
+  </div>
+
+  <div id="open-book">
+    <div class="book-cover-left"></div>
+    <div class="book-left">
+      <div class="book-lines"></div>
+      <p>"I took a deep breath and listened to the old brag of my heart:</p>
+      <p class="book-em">I am, I am, I am."</p>
+    </div>
+    <div class="book-spine"></div>
+    <div class="book-right">
+      <div class="book-lines"></div>
+      <p class="book-title">The Bell Jar</p>
+      <p class="book-author">— Sylvia Plath</p>
+    </div>
+    <div class="book-cover-right"></div>
+  </div>
+
+  <div id="ashtray">
+    <div class="ashtray-dish"></div>
+    <div class="cigarette">
+      <div class="cig-ash"></div>
+    </div>
+    <div class="smoke-wisp w1"></div>
+    <div class="smoke-wisp w2"></div>
+  </div>
+
+  <div class="paper" id="p-life" style="top:7%; left:3%; transform:rotate(-4deg);">
+    <div class="paper-pin"></div>
+    <div class="paper-lines"></div>
+    <div class="paper-label">Life</div>
+    <div class="paper-preview">"Born 1932, Boston.<br>Died 1963, London.<br><em>Thirty years of burning.</em>"</div>
+    <div class="paper-full">
+      <h2>Life</h2>
+      <div class="entry"><span class="year">1932</span><p>Born October 27 in Boston, Massachusetts.</p></div>
+      <div class="entry"><span class="year">1940</span><p>Her father dies. She is eight. The loss shapes everything.</p></div>
+      <div class="entry"><span class="year">1950</span><p>Enrolls at Smith College on scholarship. Begins publishing nationally.</p></div>
+      <div class="entry"><span class="year">1953</span><p>Guest editor at <em>Mademoiselle</em>. Attempts suicide. Undergoes electroconvulsive therapy.</p></div>
+      <div class="entry"><span class="year">1955</span><p>Graduates summa cum laude. Wins Fulbright to Cambridge.</p></div>
+      <div class="entry"><span class="year">1956</span><p>Meets and marries Ted Hughes.</p></div>
+      <div class="entry"><span class="year">1960</span><p>Publishes <em>The Colossus</em>. Daughter Frieda is born.</p></div>
+      <div class="entry"><span class="year">1962</span><p>Separates from Hughes. Writes the Ariel poems — one a day, before dawn.</p></div>
+      <div class="entry"><span class="year">1963</span><p>Publishes <em>The Bell Jar</em>. Dies February 11, aged 30.</p></div>
+    </div>
+  </div>
+
+  <div class="paper" id="p-work" style="top:5%; left:25%; transform:rotate(2deg);">
+    <div class="paper-pin"></div>
+    <div class="paper-lines"></div>
+    <div class="paper-label">Work</div>
+    <div class="paper-preview">"Five books.<br>A lifetime of drafts.<br><em>Words that outlived her.</em>"</div>
+    <div class="paper-full">
+      <h2>Work</h2>
+      <div class="work-item"><h3>The Bell Jar <span>1963</span></h3><p>Her only novel. Raw, darkly comic, devastatingly honest about mental illness and identity.</p></div>
+      <div class="work-item"><h3>Ariel <span>1965</span></h3><p>Published posthumously. Confessional, fierce, luminous — one of the most powerful collections of the 20th century.</p></div>
+      <div class="work-item"><h3>The Colossus <span>1960</span></h3><p>Her debut. Restrained but already showing the precision and darkness that would define her.</p></div>
+      <div class="work-item"><h3>The Journals <span>1982</span></h3><p>Unfiltered. A window into her ambition, grief, and relentless inner world.</p></div>
+      <div class="work-item"><h3>Letters Home <span>1975</span></h3><p>Correspondence with her mother — the gap between public brightness and private suffering.</p></div>
+    </div>
+  </div>
+
+  <div class="paper" id="p-legacy" style="top:6%; left:50%; transform:rotate(-2.5deg);">
+    <div class="paper-pin"></div>
+    <div class="paper-lines"></div>
+    <div class="paper-label">Legacy</div>
+    <div class="paper-preview">"Pulitzer. Pilgrimages.<br>Pens left on a grave<br><em>in Yorkshire.</em>"</div>
+    <div class="paper-full">
+      <h2>Legacy</h2>
+      <div class="legacy-block"><p>Awarded the Pulitzer Prize for Poetry posthumously in 1982 for her <em>Collected Poems</em>.</p></div>
+      <div class="legacy-block"><p>Pioneered confessional poetry alongside Robert Lowell and Anne Sexton — making the interior life a legitimate subject of literature.</p></div>
+      <div class="legacy-block"><p><em>The Bell Jar</em> has never gone out of print — one of the most widely read novels about mental illness and womanhood.</p></div>
+      <div class="legacy-block"><p>Her grave in Heptonstall, Yorkshire, is a site of quiet pilgrimage. Visitors leave pens — an offering to the writer who never stopped.</p></div>
+    </div>
+  </div>
+
+  <div class="paper crumpled" id="p-words" style="top:8%; left:73%; transform:rotate(3deg);">
+    <div class="paper-lines"></div>
+    <div class="paper-label">Words</div>
+    <div class="paper-preview">"Dying is an art,<br>like everything else.<br><em>I do it exceptionally well.</em>"</div>
+    <div class="paper-full">
+      <h2>In Her Words</h2>
+      <div class="quote-block"><p>"Dying is an art, like everything else. I do it exceptionally well."</p></div>
+      <div class="quote-block"><p>"I am not resigned: I am not content. I am burning."</p></div>
+      <div class="quote-block"><p>"The silence depressed me. It wasn't the silence of silence. It was my own silence."</p></div>
+      <div class="quote-block"><p>"I desire the things that will destroy me in the end."</p></div>
+      <div class="quote-block"><p>"Everything in life is writable about if you have the outgoing guts to do it."</p></div>
+      <div class="quote-block"><p>"Out of the ash I rise with my red hair and I eat men like air."</p></div>
+    </div>
+  </div>
+
+  <div id="nameplate">
+    <div class="nameplate-rule"></div>
+    <div class="nameplate-dates">1932 — 1963</div>
     <h1>Sylvia Plath</h1>
-    <p class="tagline"><em>"I took a deep breath and listened to the old brag of my heart: I am, I am, I am."</em></p>
+    <div class="nameplate-sub">poet · novelist · iconoclast</div>
+    <div class="nameplate-rule"></div>
   </div>
 
-  <div id="desk">
+  <div id="desk-front"></div>
 
-    <div class="paper" id="paper-life" style="top:12%; left:8%; transform:rotate(-3deg);">
-      <div class="paper-tab">Life</div>
-      <div class="paper-content">
-        <h2>Life</h2>
-        <div class="entry"><span class="year">1932</span><p>Born October 27 in Boston, Massachusetts.</p></div>
-        <div class="entry"><span class="year">1940</span><p>Her father dies. She is eight. The loss shapes everything.</p></div>
-        <div class="entry"><span class="year">1950</span><p>Enrolls at Smith College on scholarship. Begins publishing nationally.</p></div>
-        <div class="entry"><span class="year">1953</span><p>Guest editor at <em>Mademoiselle</em>. Attempts suicide. Undergoes electroconvulsive therapy.</p></div>
-        <div class="entry"><span class="year">1955</span><p>Graduates summa cum laude. Wins Fulbright to Cambridge.</p></div>
-        <div class="entry"><span class="year">1956</span><p>Meets and marries Ted Hughes.</p></div>
-        <div class="entry"><span class="year">1960</span><p>Publishes <em>The Colossus</em>. Daughter Frieda is born.</p></div>
-        <div class="entry"><span class="year">1962</span><p>Separates from Hughes. Writes the Ariel poems — one a day, before dawn.</p></div>
-        <div class="entry"><span class="year">1963</span><p>Publishes <em>The Bell Jar</em>. Dies February 11, aged 30.</p></div>
-      </div>
-    </div>
+</div>
 
-    <div class="paper" id="paper-work" style="top:10%; left:34%; transform:rotate(1.5deg);">
-      <div class="paper-tab">Work</div>
-      <div class="paper-content">
-        <h2>Work</h2>
-        <div class="work-item">
-          <h3>The Bell Jar <span>1963</span></h3>
-          <p>Her only novel. Semi-autobiographical, raw, darkly comic, and devastatingly honest about mental illness and identity.</p>
-        </div>
-        <div class="work-item">
-          <h3>Ariel <span>1965</span></h3>
-          <p>Published posthumously. One of the most powerful poetry collections of the 20th century — confessional, fierce, luminous.</p>
-        </div>
-        <div class="work-item">
-          <h3>The Colossus <span>1960</span></h3>
-          <p>Her debut collection. Restrained but already showing the precision and darkness that would define her voice.</p>
-        </div>
-        <div class="work-item">
-          <h3>The Journals <span>1982</span></h3>
-          <p>Unfiltered entries spanning her life. A window into her ambition, grief, and relentless inner world.</p>
-        </div>
-        <div class="work-item">
-          <h3>Letters Home <span>1975</span></h3>
-          <p>Correspondence with her mother — revealing the gap between her public brightness and private suffering.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="paper" id="paper-legacy" style="top:11%; left:60%; transform:rotate(-1deg);">
-      <div class="paper-tab">Legacy</div>
-      <div class="paper-content">
-        <h2>Legacy</h2>
-        <div class="legacy-block"><p>Awarded the Pulitzer Prize for Poetry posthumously in 1982 for her <em>Collected Poems</em>.</p></div>
-        <div class="legacy-block"><p>Pioneered confessional poetry alongside Robert Lowell and Anne Sexton — making the interior life a legitimate subject of literature.</p></div>
-        <div class="legacy-block"><p><em>The Bell Jar</em> has never gone out of print. It remains one of the most widely read novels about mental illness and the pressures placed on women.</p></div>
-        <div class="legacy-block"><p>Her grave in Heptonstall, Yorkshire, is a site of quiet pilgrimage. Visitors leave pens — an offering to the writer who never stopped.</p></div>
-      </div>
-    </div>
-
-    <div class="paper" id="paper-quotes" style="top:13%; left:82%; transform:rotate(2deg);">
-      <div class="paper-tab">Words</div>
-      <div class="paper-content">
-        <h2>In Her Words</h2>
-        <div class="quote-block"><p>"Dying is an art, like everything else. I do it exceptionally well."</p></div>
-        <div class="quote-block"><p>"I am not resigned: I am not content. I am burning."</p></div>
-        <div class="quote-block"><p>"The silence depressed me. It wasn't the silence of silence. It was my own silence."</p></div>
-        <div class="quote-block"><p>"I desire the things that will destroy me in the end."</p></div>
-        <div class="quote-block"><p>"Everything in life is writable about if you have the outgoing guts to do it."</p></div>
-      </div>
-    </div>
-
+<div id="overlay" class="hidden">
+  <div id="open-paper">
+    <button id="close-btn">✕</button>
+    <div id="open-paper-content"></div>
   </div>
+</div>
 
-  <div id="overlay" class="hidden">
-    <div id="open-paper">
-      <button id="close-btn">✕</button>
-      <div id="open-paper-content"></div>
-    </div>
-  </div>
-
-  <div id="footer">
-    <p>Inspired by Sylvia Plath's life and work</p>
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

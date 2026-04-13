@@ -1,0 +1,94 @@
+#desk {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  height: 520px;
+  background: linear-gradient(135deg, #2a1f0e 0%, #1e1508 40%, #2e2210 100%);
+  border-radius: 4px;
+  border: 1px solid #3a2a14;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.8),
+    inset 0 1px 0 rgba(255,220,150,0.05),
+    inset 0 -2px 8px rgba(0,0,0,0.4);
+  overflow: hidden;
+  margin-bottom: 40px;
+  z-index: 2;
+}
+
+#desk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    100deg,
+    transparent,
+    transparent 40px,
+    rgba(0,0,0,0.04) 40px,
+    rgba(0,0,0,0.04) 41px
+  );
+  pointer-events: none;
+}
+
+#desk::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 120px,
+    rgba(255,255,255,0.01) 120px,
+    rgba(255,255,255,0.01) 121px
+  );
+  pointer-events: none;
+}
+
+#desk-front {
+  position: absolute;
+  bottom: -28px;
+  left: -1px; right: -1px;
+  height: 28px;
+  background: linear-gradient(to bottom, #1a1208, #0e0a04);
+  border: 1px solid #3a2a14;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.9);
+}
+
+#nameplate {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.nameplate-rule {
+  width: 160px; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,180,130,0.4), transparent);
+  margin: 6px auto;
+}
+
+.nameplate-dates {
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: #6a5a3a;
+  text-transform: uppercase;
+}
+
+#nameplate h1 {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #d4c9a8;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 40px rgba(200,160,60,0.2);
+}
+
+.nameplate-sub {
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: #5a4a2a;
+  text-transform: uppercase;
+}

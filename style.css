@@ -11,7 +11,6 @@ body {
   overflow-x: hidden;
 }
 
-/* header */
 #header {
   text-align: center;
   padding: 60px 40px 40px;
@@ -39,19 +38,37 @@ body {
   line-height: 1.9;
 }
 
-/* desk */
 #desk {
   position: relative;
-  width: 100%;
-  height: 420px;
-  background: linear-gradient(to bottom, #100d09, #1a1410);
-  border-top: 1px solid #1e1a14;
-  border-bottom: 1px solid #1e1a14;
+  width: 90%;
+  max-width: 1100px;
+  height: 520px;
+  background: linear-gradient(135deg, #2a1f0e 0%, #1e1508 40%, #2e2210 100%);
+  border-radius: 4px;
+  border: 1px solid #3a2a14;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.8),
+    inset 0 1px 0 rgba(255,220,150,0.05),
+    inset 0 -2px 8px rgba(0,0,0,0.4);
   overflow: hidden;
+  margin-bottom: 40px;
 }
 
-/* desk texture line */
 #desk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    100deg,
+    transparent,
+    transparent 40px,
+    rgba(0,0,0,0.04) 40px,
+    rgba(0,0,0,0.04) 41px
+  );
+  pointer-events: none;
+}
+
+#desk::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -62,22 +79,47 @@ body {
     rgba(255,255,255,0.01) 120px,
     rgba(255,255,255,0.01) 121px
   );
+  pointer-events: none;
 }
 
-/* paper */
+.desk-edge {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 12px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+  z-index: 1;
+}
+
+.desk-lamp-glow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(200,160,80,0.09) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .paper {
   position: absolute;
-  width: 220px;
-  background: #f5f0e8;
-  border-radius: 2px;
-  box-shadow: 4px 6px 24px rgba(0,0,0,0.6);
+  width: 210px;
+  background: linear-gradient(160deg, #fdf8f0, #f0e8d8);
+  border-radius: 1px;
+  box-shadow:
+    3px 4px 16px rgba(0,0,0,0.6),
+    inset 1px 1px 0 rgba(255,255,255,0.6);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  z-index: 2;
 }
 
 .paper:hover {
-  box-shadow: 6px 10px 36px rgba(0,0,0,0.8);
+  box-shadow:
+    6px 12px 32px rgba(0,0,0,0.75),
+    inset 1px 1px 0 rgba(255,255,255,0.6);
   z-index: 10;
 }
 
@@ -94,7 +136,7 @@ body {
 .paper-content {
   padding: 16px;
   pointer-events: none;
-  max-height: 320px;
+  max-height: 380px;
   overflow: hidden;
 }
 
@@ -118,11 +160,10 @@ body {
 .work-item h3 span { font-size: 0.6rem; color: #9a8e7e; }
 .legacy-block, .quote-block { margin-bottom: 10px; }
 
-/* overlay */
 #overlay {
   position: fixed;
   inset: 0;
-  background: rgba(8,6,4,0.85);
+  background: rgba(8,6,4,0.88);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,26 +177,28 @@ body {
 }
 
 #open-paper {
-  background: #f5f0e8;
-  width: 560px;
+  background: linear-gradient(160deg, #fdf8f0, #f0e8d8);
+  width: 580px;
   max-width: 90vw;
   max-height: 80vh;
   overflow-y: auto;
   border-radius: 2px;
-  padding: 48px;
+  padding: 52px;
   position: relative;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.8);
-  animation: unfold 0.4s ease;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,0.85),
+    inset 1px 1px 0 rgba(255,255,255,0.6);
+  animation: unfold 0.35s ease;
 }
 
 @keyframes unfold {
-  from { transform: scale(0.92) translateY(20px); opacity: 0; }
+  from { transform: scale(0.93) translateY(16px); opacity: 0; }
   to   { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 #close-btn {
   position: absolute;
-  top: 16px; right: 20px;
+  top: 18px; right: 22px;
   background: none;
   border: none;
   font-size: 1rem;
@@ -167,11 +210,13 @@ body {
 
 #open-paper-content h2 {
   display: block;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 400;
   color: #2a1e10;
   margin-bottom: 32px;
   letter-spacing: 0.04em;
+  border-bottom: 1px solid #d8d0c0;
+  padding-bottom: 16px;
 }
 
 #open-paper-content p {
@@ -190,7 +235,6 @@ body {
 #open-paper-content .legacy-block, #open-paper-content .quote-block { margin-bottom: 24px; border-left: 1px solid #d8d0c0; padding-left: 16px; }
 #open-paper-content .quote-block p { font-style: italic; }
 
-/* footer */
 #footer {
   padding: 40px;
   font-size: 0.6rem;
