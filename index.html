@@ -2,22 +2,110 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Where the Figs Hang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sylvia Plath</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="quote">"I saw my life branching out before me like the green fig tree…"</div>
-  <div id="tree">
-    <div class="stem"></div>
-    <div class="branch-row">
-      <div class="fig" data-name="Love"    data-msg="to love is to lose yourself willingly.">Love</div>
-      <div class="fig" data-name="Art"     data-msg="to create is to bleed in silence.">Art</div>
-      <div class="fig" data-name="Success" data-msg="to succeed is to outgrow your own skin.">Success</div>
-      <div class="fig" data-name="Freedom" data-msg="to be free is to belong nowhere.">Freedom</div>
-    </div>
-  </div>
-  <div id="message"></div>
-  <div id="footer">Inspired by Sylvia Plath's The Bell Jar</div>
+
+  <header>
+    <p class="subtitle">1932 — 1963</p>
+    <h1>Sylvia Plath</h1>
+    <p class="tagline"><em>"I took a deep breath and listened to the old brag of my heart: I am, I am, I am."</em></p>
+  </header>
+
+  <nav>
+    <button class="tab active" data-tab="life">Life</button>
+    <button class="tab" data-tab="work">Work</button>
+    <button class="tab" data-tab="legacy">Legacy</button>
+  </nav>
+
+  <main>
+
+    <section id="life" class="tab-content active">
+      <div class="entry">
+        <span class="year">1932</span>
+        <p>Born on October 27 in Boston, Massachusetts, to Otto Plath and Aurelia Schober.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1940</span>
+        <p>Her father dies of complications from diabetes. She is eight years old. The loss shapes everything that follows.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1950</span>
+        <p>Enrolls at Smith College on scholarship. Begins publishing poetry and short stories in national magazines.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1953</span>
+        <p>Guest editor at <em>Mademoiselle</em> in New York. Returns home and attempts suicide. Undergoes electroconvulsive therapy.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1955</span>
+        <p>Graduates summa cum laude from Smith. Wins a Fulbright scholarship to Newnham College, Cambridge.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1956</span>
+        <p>Meets and marries poet Ted Hughes in Cambridge.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1960</span>
+        <p>Publishes her first poetry collection, <em>The Colossus</em>. Her daughter Frieda is born.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1962</span>
+        <p>Separates from Ted Hughes after discovering his affair. Writes the Ariel poems in a white heat — one a day, before dawn.</p>
+      </div>
+      <div class="entry">
+        <span class="year">1963</span>
+        <p>Publishes <em>The Bell Jar</em> under the pseudonym Victoria Lucas. Dies on February 11, aged 30.</p>
+      </div>
+    </section>
+
+    <section id="work" class="tab-content">
+      <div class="work-item">
+        <h3>The Bell Jar <span>1963</span></h3>
+        <p>Her only novel. A semi-autobiographical account of a young woman's descent into mental illness. Raw, darkly comic, and devastatingly honest.</p>
+      </div>
+      <div class="work-item">
+        <h3>Ariel <span>1965</span></h3>
+        <p>Published posthumously. Considered one of the most powerful poetry collections of the 20th century. Confessional, fierce, and luminous.</p>
+      </div>
+      <div class="work-item">
+        <h3>The Colossus <span>1960</span></h3>
+        <p>Her debut collection. More restrained than Ariel, but already showing the precision and darkness that would define her voice.</p>
+      </div>
+      <div class="work-item">
+        <h3>The Journals of Sylvia Plath <span>1982</span></h3>
+        <p>Unfiltered entries spanning her life. A window into her ambition, her grief, and her relentless inner world.</p>
+      </div>
+      <div class="work-item">
+        <h3>Letters Home <span>1975</span></h3>
+        <p>Correspondence with her mother. Reveals the gap between her public brightness and private suffering.</p>
+      </div>
+    </section>
+
+    <section id="legacy" class="tab-content">
+      <div class="legacy-block">
+        <p>Sylvia Plath was awarded the Pulitzer Prize for Poetry posthumously in 1982 for her <em>Collected Poems</em> — one of only a handful of poets to receive it after death.</p>
+      </div>
+      <div class="legacy-block">
+        <p>She is credited with pioneering confessional poetry alongside Robert Lowell and Anne Sexton — a movement that made the interior life a legitimate subject of literature.</p>
+      </div>
+      <div class="legacy-block">
+        <p><em>The Bell Jar</em> has never gone out of print. It remains one of the most widely read novels about mental illness, identity, and the pressures placed on women.</p>
+      </div>
+      <div class="legacy-block">
+        <p>Her grave in Heptonstall, Yorkshire, is a site of quiet pilgrimage. Visitors leave pens — an offering to the writer who never stopped.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>"Dying is an art, like everything else. I do it exceptionally well."</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
