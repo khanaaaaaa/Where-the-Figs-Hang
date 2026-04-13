@@ -1,11 +1,14 @@
-const tabs = document.querySelectorAll('.tab');
-const contents = document.querySelectorAll('.tab-content');
+const papers = document.querySelectorAll('.paper');
+const overlay = document.getElementById('overlay');
+const openContent = document.getElementById('open-paper-content');
+const closeBtn = document.getElementById('close-btn');
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    contents.forEach(c => c.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.tab).classList.add('active');
+papers.forEach(paper => {
+  paper.addEventListener('click', () => {
+    openContent.innerHTML = paper.querySelector('.paper-content').innerHTML;
+    overlay.classList.remove('hidden');
   });
 });
+
+closeBtn.addEventListener('click', () => overlay.classList.add('hidden'));
+overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.add('hidden'); });
