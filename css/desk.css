@@ -2,7 +2,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #2a1f0e 0%, #1e1508 40%, #2e2210 100%);
+  background: linear-gradient(160deg, #ede0cc 0%, #e4d4b8 40%, #d8c8a8 100%);
   border-radius: 0;
   border: none;
   box-shadow:
@@ -72,14 +72,14 @@
 .nameplate-dates {
   font-size: 0.55rem;
   letter-spacing: 0.3em;
-  color: #6a5a3a;
+  color: #9a8060;
   text-transform: uppercase;
 }
 
 #nameplate h1 {
   font-size: clamp(1.2rem, 4vw, 2.4rem);
   font-weight: 400;
-  color: #d4c9a8;
+  color: #3a2a14;
   letter-spacing: 0.1em;
   text-shadow: 0 0 40px rgba(200,160,60,0.2);
 }
@@ -87,6 +87,6 @@
 .nameplate-sub {
   font-size: 0.55rem;
   letter-spacing: 0.25em;
-  color: #5a4a2a;
+  color: #8a7050;
   text-transform: uppercase;
 }

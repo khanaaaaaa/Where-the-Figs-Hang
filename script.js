@@ -1,4 +1,4 @@
-const papers = document.querySelectorAll('.paper');
+const papers = document.querySelectorAll('.book');
 const overlay = document.getElementById('overlay');
 const openContent = document.getElementById('open-paper-content');
 const closeBtn = document.getElementById('close-btn');
@@ -70,7 +70,7 @@ function drawParticles() {
   dots.forEach(d => {
     ctx.beginPath();
     ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(210,190,150,${d.o})`;
+    ctx.fillStyle = `rgba(160,130,90,${d.o})`;
     ctx.fill();
     d.x += d.dx;
     d.y += d.dy;
@@ -109,18 +109,9 @@ function cycleTypewriter() {
 }
 cycleTypewriter();
 
-// Paper hover lift
 papers.forEach(paper => {
-  const base = paper.style.transform;
-  paper.addEventListener('mouseenter', () => {
-    paper.style.transform = base.replace(/rotate\([^)]+\)/, '') + ' rotate(0deg) translateY(-8px) scale(1.03)';
-  });
-  paper.addEventListener('mouseleave', () => {
-    paper.style.transform = base;
-  });
-
   paper.addEventListener('click', () => {
-    const full = paper.querySelector('.paper-full');
+    const full = paper.querySelector('.book-full');
     if (!full) return;
     openContent.innerHTML = '';
     overlay.classList.remove('hidden');
