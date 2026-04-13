@@ -12,11 +12,11 @@
 #open-paper {
   background: linear-gradient(160deg, #fdf8f0, #f0e8d8);
   width: 580px;
-  max-width: 90vw;
-  max-height: 80vh;
+  max-width: 95vw;
+  max-height: 90vh;
   overflow-y: auto;
   border-radius: 2px;
-  padding: 52px;
+  padding: clamp(20px, 5vw, 52px);
   position: relative;
   box-shadow: 0 24px 80px rgba(0,0,0,0.9), inset 1px 1px 0 rgba(255,255,255,0.6);
   animation: unfold 0.35s cubic-bezier(.22,.68,0,1.2);

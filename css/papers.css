@@ -57,3 +57,31 @@
 .work-item h3 { font-size: 0.75rem; font-weight: 500; color: #3a2e1e; margin-bottom: 2px; display: flex; justify-content: space-between; }
 .work-item h3 span { font-size: 0.6rem; color: #9a8e7e; }
 .legacy-block, .quote-block { margin-bottom: 10px; }
+
+@media (max-width: 480px) {
+    #desk {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+    .paper {
+      position: relative !important;
+      width: 82vw !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+      margin: 0 auto 14px;
+    }
+    #nameplate {
+      position: relative !important;
+      bottom: auto !important;
+      transform: none !important;
+      order: -1;
+      margin-bottom: 24px;
+    }
+}
