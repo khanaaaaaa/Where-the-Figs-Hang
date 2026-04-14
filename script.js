@@ -1,51 +1,50 @@
-const papers = document.querySelectorAll('.book');
 const overlay = document.getElementById('overlay');
 const openContent = document.getElementById('open-paper-content');
 const closeBtn = document.getElementById('close-btn');
 
-function typewrite(el, html, speed = 14) {
-  const temp = document.createElement('div');
-  temp.innerHTML = html;
-  el.innerHTML = '';
-
-  function processNode(node, parent, done) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      const text = node.textContent;
-      if (!text.trim()) { parent.appendChild(document.createTextNode(text)); done(); return; }
-      let j = 0;
-      const tn = document.createTextNode('');
-      parent.appendChild(tn);
-      const t = setInterval(() => {
-        tn.textContent += text[j++];
-        if (j >= text.length) { clearInterval(t); done(); }
-      }, speed);
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      const clone = document.createElement(node.tagName);
-      Array.from(node.attributes).forEach(a => clone.setAttribute(a.name, a.value));
-      parent.appendChild(clone);
-      const children = Array.from(node.childNodes);
-      let ci = 0;
-      function next() {
-        if (ci < children.length) processNode(children[ci++], clone, next);
-        else done();
-      }
-      next();
-    } else {
-      done();
-    }
-  }
-
-  const nodes = Array.from(temp.childNodes);
-  let i = 0;
-  function nextNode() {
-    if (i < nodes.length) processNode(nodes[i++], el, nextNode);
-  }
-  nextNode();
+function openModal(html) {
+  openContent.innerHTML = html;
+  overlay.classList.remove('hidden');
 }
 
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-let W, H, dots = [];
+closeBtn.addEventListener('click', () => overlay.classList.add('hidden'));
+overlay.addEventListener('click', function(e) {
+  if (e.target === overlay) overlay.classList.add('hidden');
+});
+
+document.querySelectorAll('.book').forEach(function(book) {
+  var tip = book.getAttribute('data-tip');
+  if (tip) {
+    var tt = document.createElement('div');
+    tt.className = 'book-tooltip';
+    tt.textContent = tip;
+    book.appendChild(tt);
+  }
+  book.addEventListener('click', function() {
+    var full = book.querySelector('.book-full');
+    if (!full) return;
+    openModal(full.innerHTML);
+  });
+});
+
+var poemOverlay = document.getElementById('poem-overlay');
+var poemClose = document.getElementById('poem-close');
+var poemPaper = document.getElementById('poem-paper');
+
+poemPaper.style.cursor = 'pointer';
+poemPaper.addEventListener('click', function() {
+  poemOverlay.classList.remove('hidden');
+});
+poemClose.addEventListener('click', function() {
+  poemOverlay.classList.add('hidden');
+});
+poemOverlay.addEventListener('click', function(e) {
+  if (e.target === poemOverlay) poemOverlay.classList.add('hidden');
+});
+
+var canvas = document.getElementById('particles');
+var ctx = canvas.getContext('2d');
+var W, H;
 
 function resize() {
   W = canvas.width = window.innerWidth;
@@ -54,23 +53,24 @@ function resize() {
 resize();
 window.addEventListener('resize', resize);
 
-for (let i = 0; i < 55; i++) {
+var dots = [];
+for (var i = 0; i < 55; i++) {
   dots.push({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
     r: Math.random() * 1.2 + 0.3,
     dx: (Math.random() - 0.5) * 0.18,
-    dy: -Math.random() * 0.2 - 0.04,
-    o: Math.random() * 0.35 + 0.05
+    dy: -Math.random() * 0.15 - 0.04,
+    o: Math.random() * 0.3 + 0.05
   });
 }
 
 function drawParticles() {
   ctx.clearRect(0, 0, W, H);
-  dots.forEach(d => {
+  dots.forEach(function(d) {
     ctx.beginPath();
     ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(160,130,90,${d.o})`;
+    ctx.fillStyle = 'rgba(160,130,90,' + d.o + ')';
     ctx.fill();
     d.x += d.dx;
     d.y += d.dy;
@@ -82,54 +82,81 @@ function drawParticles() {
 }
 drawParticles();
 
-const twLines = [
-  "dying is an art...",
-  "i am, i am, i am.",
-  "out of the ash\ni rise...",
-  "i have done it again.",
-  "love set you going\nlike a fat gold watch.",
+var twLines = [
+  '"Dying is an art, like everything else.\nI do it exceptionally well."',
+  '"I am, I am, I am."',
+  '"Out of the ash\nI rise with my red hair\nand I eat men like air."',
+  '"I have done it again.\nOne year in every ten\nI manage it."',
+  '"The worst enemy to creativity\nis self-doubt."',
+  '"I desire the things\nthat will destroy me\nin the end."',
+  '"Everything in life is writable\nif you have the guts to do it."'
 ];
-let twIndex = 0;
-const twEl = document.getElementById('tw-typed');
+var twIndex = 0;
+var twEl = document.getElementById('tw-typed');
 
 function typeLine(line, cb) {
   twEl.textContent = '';
-  let i = 0;
-  const t = setInterval(() => {
-    twEl.textContent += line[i++];
-    if (i >= line.length) { clearInterval(t); setTimeout(cb, 1800); }
+  var i = 0;
+  var t = setInterval(function() {
+    twEl.textContent = line.slice(0, ++i) + '|';
+    if (i >= line.length) {
+      clearInterval(t);
+      setTimeout(function() {
+        twEl.textContent = line;
+        setTimeout(cb, 400);
+      }, 1800);
+    }
   }, 60);
 }
-
 function cycleTypewriter() {
-  typeLine(twLines[twIndex % twLines.length], () => {
+  typeLine(twLines[twIndex % twLines.length], function() {
     twIndex++;
     cycleTypewriter();
   });
 }
 cycleTypewriter();
 
-papers.forEach(paper => {
-  paper.addEventListener('click', () => {
-    const full = paper.querySelector('.book-full');
-    if (!full) return;
-    openContent.innerHTML = '';
-    overlay.classList.remove('hidden');
-    typewrite(openContent, full.innerHTML);
-  });
+var tutSteps = [
+  { text: "Welcome to Sylvia's desk.", hint: "Look around -- things are not always what they seem." },
+  { text: "See the bookshelf on the right?", hint: "Hover a book to peek at it. Click to open it." },
+  { text: "The paper on the typewriter is a poem.", hint: "Click it to read Lady Lazarus." }
+];
+
+var currentStep = 0;
+var tutorial = document.getElementById('tutorial');
+var tutBox = document.getElementById('tutorial-box');
+var tutNext = document.getElementById('tut-next');
+var tutText = document.getElementById('tut-text');
+var tutHint = document.getElementById('tut-hint');
+var tutCounter = document.getElementById('tut-counter');
+
+function showStep(n) {
+  tutText.textContent = tutSteps[n].text;
+  tutHint.textContent = tutSteps[n].hint;
+  tutCounter.textContent = (n + 1) + ' / ' + tutSteps.length;
+  tutNext.textContent = n === tutSteps.length - 1 ? 'Got it' : 'Next';
+  tutBox.classList.remove('tut-pop');
+  void tutBox.offsetWidth;
+  tutBox.classList.add('tut-pop');
+}
+
+setTimeout(function() { showStep(0); }, 100);
+
+tutNext.addEventListener('click', function() {
+  currentStep++;
+  if (currentStep >= tutSteps.length) {
+    tutorial.classList.add('hidden');
+    return;
+  }
+  showStep(currentStep);
 });
 
-closeBtn.addEventListener('click', () => overlay.classList.add('hidden'));
-overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.add('hidden'); });
-
-const candle = document.getElementById('candle');
-const candleGlow = candle.querySelector('.candle-glow');
-document.addEventListener('mousemove', e => {
-  const rect = candle.getBoundingClientRect();
-  const cx = rect.left + rect.width / 2;
-  const cy = rect.top + rect.height / 2;
-  const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-  const intensity = Math.max(0, 1 - dist / 300);
+var candle = document.getElementById('candle');
+var candleGlow = candle.querySelector('.candle-glow');
+document.addEventListener('mousemove', function(e) {
+  var rect = candle.getBoundingClientRect();
+  var dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
+  var intensity = Math.max(0, 1 - dist / 300);
   candleGlow.style.opacity = 0.6 + intensity * 0.8;
-  candleGlow.style.transform = `translateX(-50%) scale(${1 + intensity * 0.6})`;
+  candleGlow.style.transform = 'translateX(-50%) scale(' + (1 + intensity * 0.6) + ')';
 });

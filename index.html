@@ -13,20 +13,68 @@
 </head>
 <body>
 
-<div id="particles"></div>
+<canvas id="particles"></canvas>
 <div id="vignette"></div>
+
+<div id="tutorial">
+  <div id="tutorial-box">
+    <div id="tut-counter">1 / 3</div>
+    <p id="tut-text"></p>
+    <span id="tut-hint" class="tut-hint"></span>
+    <button id="tut-next">Next</button>
+  </div>
+</div>
+
+<div id="poem-overlay" class="hidden">
+  <div id="poem-box">
+    <button id="poem-close">x</button>
+    <div id="poem-header">
+      <div id="poem-title">Lady Lazarus</div>
+      <div id="poem-year">Sylvia Plath, 1962</div>
+    </div>
+    <div id="poem-text">
+      <p>I have done it again.</p><p>One year in every ten</p><p>I manage it --</p><br>
+      <p>A sort of walking miracle, my skin</p><p>Bright as a Nazi lampshade,</p><p>My right foot</p><br>
+      <p>A paperweight,</p><p>My face a featureless, fine</p><p>Jew linen.</p><br>
+      <p>Peel off the napkin</p><p>O my enemy.</p><p>Do I terrify?</p><br>
+      <p>The nose, the eye pits, the full set of teeth?</p><p>The sour breath</p><p>Will vanish in a day.</p><br>
+      <p>Soon, soon the flesh</p><p>The grave cave ate will be</p><p>At home on me</p><br>
+      <p>And I a smiling woman.</p><p>I am only thirty.</p><p>And like the cat I have nine times to die.</p><br>
+      <p>This is Number Three.</p><p>What a trash</p><p>To annihilate each decade.</p><br>
+      <p>What a million filaments.</p><p>The peanut-crunching crowd</p><p>Shoves in to see</p><br>
+      <p>Them unwrap me hand and foot --</p><p>The big strip tease.</p><p>Gentlemen, ladies</p><br>
+      <p>These are my hands</p><p>My knees.</p><p>I may be skin and bone,</p><br>
+      <p>Nevertheless, I am the same, identical woman.</p><p>The first time it happened I was ten.</p><p>It was an accident.</p><br>
+      <p>The second time I meant</p><p>To last it out and not come back at all.</p><p>I rocked shut</p><br>
+      <p>As a seashell.</p><p>They had to call and call</p><p>And pick the worms off me like sticky pearls.</p><br>
+      <p>Dying</p><p>Is an art, like everything else.</p><p>I do it exceptionally well.</p><br>
+      <p>I do it so it feels like hell.</p><p>I do it so it feels real.</p><p>I guess you could say I've a call.</p><br>
+      <p>It's easy enough to do it in a cell.</p><p>It's easy enough to do it and stay put.</p><p>It's the theatrical</p><br>
+      <p>Comeback in broad day</p><p>To the same place, the same face, the same brute</p><p>Amused shout:</p><br>
+      <p>'A miracle!'</p><p>That knocks me out.</p><p>There is a charge</p><br>
+      <p>For the eyeing of my scars, there is a charge</p><p>For the hearing of my heart --</p><p>It really goes.</p><br>
+      <p>And there is a charge, a very large charge</p><p>For a word or a touch</p><p>Or a bit of blood</p><br>
+      <p>Or a piece of my hair or my clothes.</p><p>So, so, Herr Doktor.</p><p>So, Herr Enemy.</p><br>
+      <p>I am your opus,</p><p>I am your valuable,</p><p>The pure gold baby</p><br>
+      <p>That melts to a shriek.</p><p>I turn and burn.</p><p>Do not think I underestimate your great concern.</p><br>
+      <p>Ash, ash --</p><p>You poke and stir.</p><p>Flesh, bone, there is nothing there --</p><br>
+      <p>A cake of soap,</p><p>A wedding ring,</p><p>A gold filling.</p><br>
+      <p>Herr God, Herr Lucifer</p><p>Beware</p><p>Beware.</p><br>
+      <p>Out of the ash</p><p>I rise with my red hair</p><p>And I eat men like air.</p>
+    </div>
+  </div>
+</div>
+
+<div id="overlay" class="hidden">
+  <div id="open-paper">
+    <button id="close-btn">x</button>
+    <div id="open-paper-content"></div>
+  </div>
+</div>
 
 <div id="desk">
 
-  <div id="lamp">
-    <div class="lamp-base"></div>
-    <div class="lamp-pole"></div>
-    <div class="lamp-arm"></div>
-    <div class="lamp-shade"></div>
-    <div class="lamp-glow"></div>
-  </div>
-
-  <div id="candle">
+<div id="candle">
     <div class="candle-body">
       <div class="candle-drip d1"></div>
       <div class="candle-drip d2"></div>
@@ -39,6 +87,22 @@
   </div>
 
   <div id="typewriter">
+    <div id="poem-paper">
+      <div id="poem-paper-title">Lady Lazarus</div>
+      <div id="poem-paper-lines">
+        <span>I have done it again.</span>
+        <span>One year in every ten</span>
+        <span>I manage it --</span>
+        <span>&nbsp;</span>
+        <span>Dying is an art,</span>
+        <span>like everything else.</span>
+        <span>I do it exceptionally well.</span>
+        <span>&nbsp;</span>
+        <span>Out of the ash</span>
+        <span>I rise with my red hair</span>
+        <span>And I eat men like air.</span>
+      </div>
+    </div>
     <div class="tw-carriage"></div>
     <div class="tw-body">
       <div class="tw-paper-slot">
@@ -91,7 +155,7 @@
     <div class="book-right">
       <div class="book-lines"></div>
       <p class="book-title">The Bell Jar</p>
-      <p class="book-author">— Sylvia Plath</p>
+      <p class="book-author">-- Sylvia Plath</p>
     </div>
     <div class="book-cover-right"></div>
   </div>
@@ -104,77 +168,99 @@
     <div class="smoke-wisp w1"></div>
     <div class="smoke-wisp w2"></div>
   </div>
+
   <div id="bookshelf">
     <div class="shelf-wall"></div>
     <div class="shelf-plank top-plank"></div>
 
-    <div class="book" id="b-life">
-      <div class="book-spine-face" style="background:linear-gradient(to bottom,#8b2a2a,#5a1a1a);">
-        <div class="book-spine-title">I · Life</div>
-        <div class="book-spine-year">1932–1963</div>
+    <div class="book" id="b-life" data-tip="Her life, in years.">
+      <div class="book-top"></div>
+      <div class="book-spine-face" style="background:linear-gradient(160deg,#8b2a2a,#5a1a1a,#7a2020);">
+        <div class="book-spine-title">I. Life</div>
+        <div class="book-spine-year">1932-1963</div>
       </div>
       <div class="book-page-edge"></div>
       <div class="book-full">
         <h2>Life</h2>
-        <div class="entry"><span class="year">1932</span><p>Born October 27 in Boston, Massachusetts.</p></div>
-        <div class="entry"><span class="year">1940</span><p>Her father dies. She is eight. The loss shapes everything.</p></div>
-        <div class="entry"><span class="year">1950</span><p>Enrolls at Smith College on scholarship. Begins publishing nationally.</p></div>
-        <div class="entry"><span class="year">1953</span><p>Guest editor at <em>Mademoiselle</em>. Attempts suicide. Undergoes electroconvulsive therapy.</p></div>
-        <div class="entry"><span class="year">1955</span><p>Graduates summa cum laude. Wins Fulbright to Cambridge.</p></div>
-        <div class="entry"><span class="year">1956</span><p>Meets and marries Ted Hughes.</p></div>
-        <div class="entry"><span class="year">1960</span><p>Publishes <em>The Colossus</em>. Daughter Frieda is born.</p></div>
-        <div class="entry"><span class="year">1962</span><p>Separates from Hughes. Writes the Ariel poems — one a day, before dawn.</p></div>
-        <div class="entry"><span class="year">1963</span><p>Publishes <em>The Bell Jar</em>. Dies February 11, aged 30.</p></div>
+        <div class="entry"><span class="year">1932</span><p>Born October 27 in Boston, Massachusetts, to Otto Plath, a German-born entomologist, and Aurelia Schober. She is the eldest of two children.</p></div>
+        <div class="entry"><span class="year">1940</span><p>Her father Otto dies of complications from diabetes -- an illness he refused to treat. Sylvia is eight. The loss becomes the wound she writes from for the rest of her life.</p></div>
+        <div class="entry"><span class="year">1950</span><p>Enrolls at Smith College on a full scholarship. Begins publishing in Seventeen magazine and The Christian Science Monitor. Writes obsessively in her journals.</p></div>
+        <div class="entry"><span class="year">1952</span><p>Wins Mademoiselle magazine's fiction contest. Her story "Sunday at the Mintons'" is published. She is twenty and already a nationally recognised writer.</p></div>
+        <div class="entry"><span class="year">1953</span><p>Guest editor at Mademoiselle in New York. Attempts suicide by taking sleeping pills. Found three days later. Undergoes electroconvulsive therapy at McLean Hospital.</p></div>
+        <div class="entry"><span class="year">1955</span><p>Graduates summa cum laude from Smith. Wins a Fulbright Scholarship to Newnham College, Cambridge.</p></div>
+        <div class="entry"><span class="year">1956</span><p>Meets Ted Hughes at a Cambridge party on February 25. She bites his cheek. They marry four months later, on June 16.</p></div>
+        <div class="entry"><span class="year">1960</span><p>Publishes her debut poetry collection The Colossus. Daughter Frieda Rebecca is born on April 1. The family settles in London.</p></div>
+        <div class="entry"><span class="year">1962</span><p>Discovers Hughes is having an affair. They separate. She moves to London with the children, to a flat on the same street where W.B. Yeats once lived. Writes the Ariel poems -- one a day, before the children wake.</p></div>
+        <div class="entry"><span class="year">1963</span><p>Publishes The Bell Jar under the pseudonym Victoria Lucas in January. On February 11, she dies by gas. She is thirty years old.</p></div>
       </div>
     </div>
 
-    <div class="book" id="b-work">
-      <div class="book-spine-face" style="background:linear-gradient(to bottom,#1a3a4a,#0e2030);">
-        <div class="book-spine-title">II · Work</div>
+    <div class="book" id="b-work" data-tip="Her body of work.">
+      <div class="book-top"></div>
+      <div class="book-spine-face" style="background:linear-gradient(160deg,#1a3a4a,#0e2030,#162840);">
+        <div class="book-spine-title">II. Work</div>
         <div class="book-spine-year">The Collected</div>
       </div>
       <div class="book-page-edge"></div>
       <div class="book-full">
         <h2>Work</h2>
-        <div class="work-item"><h3>The Bell Jar <span>1963</span></h3><p>Her only novel. Raw, darkly comic, devastatingly honest about mental illness and identity.</p></div>
-        <div class="work-item"><h3>Ariel <span>1965</span></h3><p>Published posthumously. Confessional, fierce, luminous — one of the most powerful collections of the 20th century.</p></div>
-        <div class="work-item"><h3>The Colossus <span>1960</span></h3><p>Her debut. Restrained but already showing the precision and darkness that would define her.</p></div>
-        <div class="work-item"><h3>The Journals <span>1982</span></h3><p>Unfiltered. A window into her ambition, grief, and relentless inner world.</p></div>
-        <div class="work-item"><h3>Letters Home <span>1975</span></h3><p>Correspondence with her mother — the gap between public brightness and private suffering.</p></div>
+        <div class="work-item"><h3>The Bell Jar <span>1963</span></h3><p>Her only novel, published under the pseudonym Victoria Lucas one month before her death. A semi-autobiographical account of Esther Greenwood's mental breakdown. Raw, darkly comic, devastatingly honest. Never out of print.</p></div>
+        <div class="work-item"><h3>Ariel <span>1965</span></h3><p>Published posthumously. The collection she wrote in the final months of her life -- one poem a day, before dawn. Lady Lazarus, Daddy, and Edge redefined what poetry could say. One of the most important collections of the 20th century.</p></div>
+        <div class="work-item"><h3>The Colossus <span>1960</span></h3><p>Her debut collection. More restrained than Ariel but already showing the precision and darkness that would define her. The title poem addresses her dead father as a ruined colossus she can never reconstruct.</p></div>
+        <div class="work-item"><h3>The Journals <span>1982</span></h3><p>Unfiltered and extraordinary. Covers 1950 to 1962. A window into her ambition, grief, and relentless self-examination. Two journals from her final years were destroyed by Ted Hughes.</p></div>
+        <div class="work-item"><h3>Letters Home <span>1975</span></h3><p>Correspondence with her mother Aurelia. The gap between the brightness of the letters and what we know of her inner life is one of the most haunting things in all of literature.</p></div>
       </div>
     </div>
 
-    <div class="book" id="b-legacy">
-      <div class="book-spine-face" style="background:linear-gradient(to bottom,#3a1a4a,#220e30);">
-        <div class="book-spine-title">III · Legacy</div>
+    <div class="book" id="b-legacy" data-tip="What she left behind.">
+      <div class="book-top"></div>
+      <div class="book-spine-face" style="background:linear-gradient(160deg,#3a1a4a,#220e30,#301840);">
+        <div class="book-spine-title">III. Legacy</div>
         <div class="book-spine-year">Pulitzer 1982</div>
       </div>
       <div class="book-page-edge"></div>
       <div class="book-full">
         <h2>Legacy</h2>
-        <div class="legacy-block"><p>Awarded the Pulitzer Prize for Poetry posthumously in 1982 for her <em>Collected Poems</em>.</p></div>
-        <div class="legacy-block"><p>Pioneered confessional poetry alongside Robert Lowell and Anne Sexton — making the interior life a legitimate subject of literature.</p></div>
-        <div class="legacy-block"><p><em>The Bell Jar</em> has never gone out of print — one of the most widely read novels about mental illness and womanhood.</p></div>
-        <div class="legacy-block"><p>Her grave in Heptonstall, Yorkshire, is a site of quiet pilgrimage. Visitors leave pens — an offering to the writer who never stopped.</p></div>
+        <div class="legacy-block"><p><strong>Pulitzer Prize, 1982.</strong> Awarded posthumously for her Collected Poems. She is one of very few poets to receive the Pulitzer after death.</p></div>
+        <div class="legacy-block"><p><strong>Confessional poetry.</strong> Alongside Robert Lowell and Anne Sexton, Plath made the interior life, the body, and mental illness valid subjects for serious literature.</p></div>
+        <div class="legacy-block"><p><strong>The Bell Jar</strong> has never gone out of print since 1963. Translated into dozens of languages. Assigned in schools and universities worldwide.</p></div>
+        <div class="legacy-block"><p><strong>The grave at Heptonstall.</strong> Her grave in Yorkshire is a site of quiet pilgrimage. Visitors leave pens. The name on the stone reads Sylvia Plath Hughes. For decades, people scratched out the name Hughes. It was re-engraved repeatedly.</p></div>
+        <div class="legacy-block"><p><strong>The Ariel controversy.</strong> The Ariel Hughes published in 1965 was not the collection Plath had arranged. Her original manuscript was published in 2004 as Ariel: The Restored Edition.</p></div>
       </div>
     </div>
 
-    <div class="book" id="b-words">
-      <div class="book-spine-face" style="background:linear-gradient(to bottom,#4a2e0a,#2e1a04);">
-        <div class="book-spine-title">IV · Words</div>
+    <div class="book" id="b-words" data-tip="In her own words.">
+      <div class="book-top"></div>
+      <div class="book-spine-face" style="background:linear-gradient(160deg,#4a2e0a,#2e1a04,#3e2408);">
+        <div class="book-spine-title">IV. Words</div>
         <div class="book-spine-year">In Her Voice</div>
       </div>
       <div class="book-page-edge"></div>
       <div class="book-full">
         <h2>In Her Words</h2>
-        <div class="quote-block"><p>"Dying is an art, like everything else. I do it exceptionally well."</p></div>
-        <div class="quote-block"><p>"I am not resigned: I am not content. I am burning."</p></div>
-        <div class="quote-block"><p>"The silence depressed me. It wasn't the silence of silence. It was my own silence."</p></div>
-        <div class="quote-block"><p>"I desire the things that will destroy me in the end."</p></div>
-        <div class="quote-block"><p>"Everything in life is writable about if you have the outgoing guts to do it."</p></div>
-        <div class="quote-block"><p>"Out of the ash I rise with my red hair and I eat men like air."</p></div>
+        <div class="quote-block"><p>"Dying is an art, like everything else. I do it exceptionally well."</p><p class="quote-src">-- Lady Lazarus, 1962</p></div>
+        <div class="quote-block"><p>"I took a deep breath and listened to the old brag of my heart: I am, I am, I am."</p><p class="quote-src">-- The Bell Jar, 1963</p></div>
+        <div class="quote-block"><p>"The silence depressed me. It wasn't the silence of silence. It was my own silence."</p><p class="quote-src">-- The Bell Jar, 1963</p></div>
+        <div class="quote-block"><p>"I desire the things that will destroy me in the end."</p><p class="quote-src">-- The Journals, 1950</p></div>
+        <div class="quote-block"><p>"Everything in life is writable about if you have the outgoing guts to do it. The worst enemy to creativity is self-doubt."</p><p class="quote-src">-- The Journals, 1952</p></div>
+        <div class="quote-block"><p>"Out of the ash I rise with my red hair and I eat men like air."</p><p class="quote-src">-- Lady Lazarus, 1962</p></div>
+        <div class="quote-block"><p>"I am vertical, but I would rather be horizontal."</p><p class="quote-src">-- I Am Vertical, 1961</p></div>
+        <div class="quote-block"><p>"Perhaps when we find ourselves wanting everything, it is because we are dangerously close to wanting nothing."</p><p class="quote-src">-- The Journals, 1952</p></div>
       </div>
     </div>
 
     <div class="shelf-plank bottom-plank"></div>
   </div>
+
+  <div id="nameplate">
+    <div class="nameplate-rule"></div>
+    <div class="nameplate-rule"></div>
+  </div>
+
+  <div id="desk-front"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,133 +1,167 @@
 #bookshelf {
   position: absolute;
-  top: 50%;
-  right: 3vw;
-  transform: translateY(-50%);
-  width: 80px;
+  bottom: 0;
+  right: 4vw;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-end;
   z-index: 6;
+  gap: 4px;
+  padding-bottom: 0;
 }
 
-.shelf-wall {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, #c8b898, #b8a888);
-  border-radius: 4px;
-  box-shadow: inset -4px 0 12px rgba(0,0,0,0.15);
-  z-index: 0;
-}
+.shelf-wall  { display: none; }
+.shelf-plank { display: none; }
 
-.shelf-plank {
-  width: 90px;
-  height: 10px;
-  background: linear-gradient(to bottom, #a08060, #7a6040);
-  border-radius: 2px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  position: relative;
-  z-index: 2;
-}
-
-.top-plank    { margin-bottom: 4px; }
-.bottom-plank { margin-top: 4px; }
-
-/* ── BOOKS ── */
 .book {
-  width: 68px;
-  height: 110px;
+  width: 36px;
+  height: 130px;
   position: relative;
   cursor: pointer;
-  margin: 3px 0;
-  z-index: 1;
-  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  transform-origin: bottom center;
 }
 
-.book:hover { transform: translateX(-10px); }
+.book:hover {
+  transform: translateY(-16px);
+  z-index: 10;
+}
 
 .book-spine-face {
   width: 100%;
   height: 100%;
-  border-radius: 2px 0 0 2px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 8px 4px;
-  box-shadow:
-    -3px 0 8px rgba(0,0,0,0.3),
-    inset 2px 0 6px rgba(255,255,255,0.06);
+  padding: 10px 3px;
   position: relative;
   overflow: hidden;
+  border-radius: 1px 2px 2px 1px;
+  box-shadow:
+    inset -4px 0 10px rgba(0,0,0,0.3),
+    inset 2px 0 4px rgba(255,255,255,0.07),
+    3px 6px 14px rgba(0,0,0,0.35);
 }
 
 .book-spine-face::before {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 4px; height: 100%;
-  background: rgba(0,0,0,0.2);
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(0,0,0,0.2) 0%,
+    transparent 25%,
+    rgba(255,255,255,0.04) 65%,
+    rgba(0,0,0,0.12) 100%
+  );
+  pointer-events: none;
+}
+
+.book-spine-face::after {
+  content: '';
+  position: absolute;
+  top: 8px; bottom: 8px;
+  left: 5px;
+  width: 1px;
+  background: rgba(255,255,255,0.07);
 }
 
 .book-spine-title {
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 0.6rem;
   font-weight: 500;
-  color: rgba(255,240,210,0.9);
+  color: rgba(255,245,220,0.95);
   letter-spacing: 0.1em;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .book-spine-year {
-  font-size: 0.42rem;
-  color: rgba(255,240,210,0.45);
-  letter-spacing: 0.08em;
+  font-size: 0.4rem;
+  color: rgba(255,245,220,0.38);
+  letter-spacing: 0.06em;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
+  position: relative;
+  z-index: 1;
+}
+
+.book-top {
+  position: absolute;
+  top: -4px;
+  left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to bottom, #f5ede0, #e8dcc8);
+  border-radius: 1px 1px 0 0;
 }
 
 .book-page-edge {
   position: absolute;
-  top: 2px; right: -5px; bottom: 2px;
-  width: 5px;
+  top: -4px;
+  right: -4px;
+  width: 4px;
+  height: calc(100% + 4px);
   background: repeating-linear-gradient(
     to bottom,
-    #f0e8d8, #f0e8d8 1px,
-    #e0d8c8 1px, #e0d8c8 2px
+    #f5ede0, #f5ede0 1px,
+    #e8dcc8 1px, #e8dcc8 2px
   );
-  border-radius: 0 1px 1px 0;
-  box-shadow: 2px 0 4px rgba(0,0,0,0.15);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 2px 0 4px rgba(0,0,0,0.18);
 }
 
 .book-full { display: none; }
 
+.book-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fdf8f0;
+  border: 1px solid rgba(160,130,90,0.3);
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-size: 0.62rem;
+  font-style: italic;
+  color: #5a3a1a;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 20;
+}
+
+.book-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fdf8f0;
+}
+
+.book:hover .book-tooltip { opacity: 1; }
+
 .entry { display: flex; gap: 8px; margin-bottom: 6px; }
-.year  { font-size: 0.6rem; color: #9a8e7e; min-width: 30px; padding-top: 2px; }
+.year  { font-size: 0.6rem; color: #9a8e7e; min-width: 30px; padding-top: 2px; flex-shrink: 0; }
 .work-item { margin-bottom: 10px; }
 .work-item h3 { font-size: 0.75rem; font-weight: 500; color: #3a2e1e; margin-bottom: 2px; display: flex; justify-content: space-between; }
 .work-item h3 span { font-size: 0.6rem; color: #9a8e7e; }
 .legacy-block, .quote-block { margin-bottom: 10px; }
 
 @media (max-width: 480px) {
-  #bookshelf {
-    position: relative;
-    top: auto; right: auto;
-    transform: none;
-    flex-direction: row;
-    width: 90vw;
-    height: 80px;
-    margin: 20px auto;
-    justify-content: center;
-    gap: 6px;
-  }
-  .shelf-wall   { display: none; }
-  .shelf-plank  { display: none; }
-  .book         { width: 55px; height: 75px; margin: 0; }
-  .book:hover   { transform: translateY(-8px); }
+  #bookshelf { right: 1vw; gap: 3px; }
+  .book { width: 30px; height: 100px; }
   .book-spine-title { font-size: 0.5rem; }
   .book-spine-year  { display: none; }
+  .book-tooltip     { display: none; }
 }
